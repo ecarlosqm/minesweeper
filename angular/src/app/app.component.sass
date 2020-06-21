@@ -1,0 +1,41 @@
+:host 
+  position: absolute
+  left: 0
+  right: 0
+  bottom: 0
+  top: 0
+  background-color: #7CB854
+  background-image: url("https://www.transparenttextures.com/patterns/hixs-evolution.png")
+
+.cell
+  grid-column-start: var(--x)
+  grid-column-end: calc(var(--x) + 1)
+  grid-row-start: calc((var(--board-size) + 1) - var(--y))
+  grid-row-end: calc((var(--board-size) + 1) - var(--y) + 1)
+  width: 3rem
+  height: 3rem
+
+// .board-wraper
+//   height: 100%
+//   display: flex
+//   align-items: center
+//   justify-content: center
+//   align-content: center
+
+.board
+  min-width: fit-content
+  flex-grow: 1
+  display: grid
+  align-content: center
+  justify-content: center
+
+.mines-weeper
+  display: flex
+  overflow: auto
+  flex-direction: column
+  align-content: stretch
+  height: 100%
+  max-width: 100%
+
+button 
+  border-radius: 0
