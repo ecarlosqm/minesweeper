@@ -26,7 +26,7 @@ cells.forEach((cell,index,cells)=>{
 Subscribe to events.
 ```typescript
 //If you use 'this' inside callback make sure you use callback = callback.bind(this)
-const uncoverMineCallback = (coordinate:Coordinates)=>{
+const uncoverMineCallback = (coordinatesOfMine:Coordinates)=>{
     console.log(coordinatesOfMine.toString())
 }
 
