@@ -4,7 +4,7 @@ import { CellsGenerator, DefaultCellsGenerator } from "./cells_generator";
 import { Coordinates } from "./coordinates";
 import { Cell } from "./cell";
 
-export class MinesWeeper {
+export class Minesweeper {
 
     private _board:Board;
     

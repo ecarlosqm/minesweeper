@@ -4,19 +4,19 @@ You can watch an expample using Angular on this [link](https://ecarlosqm.github.
 
 Basic usage.
 ```typescript
-import { MinesWeeper, Coordinates } from 'minesweeper';
+import { Minesweeper, Coordinates } from 'minesweeper';
 
-const minesWeeper = new MinesWeeper();
+const minesweeper = new Minesweeper();
 
 // The minimum size is 9
-minesWeeper.newBoard(15);
+minesweeper.newBoard(15);
 
-minesWeeper.uncover(new Coordinates(1,1));
+minesweeper.uncover(new Coordinates(1,1));
 ```
 
 Draw board.
 ```typescript
-const cells:Cell[] = minesWeeper.board();
+const cells:Cell[] = minesweeper.board();
 
 cells.forEach((cell,index,cells)=>{
     functionTodrawACell(cell);
@@ -30,7 +30,7 @@ const uncoverMineCallback = (coordinatesOfMine:Coordinates)=>{
     console.log(coordinatesOfMine.toString())
 }
 
-const cancelSubcription = minesWeeper.onUncoverMine(uncoverMineCallback);
+const cancelSubcription = minesweeper.onUncoverMine(uncoverMineCallback);
 
 cancelSubcription();
 ```

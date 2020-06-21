@@ -1,5 +1,5 @@
 export { Coordinates } from "./coordinates";
-export { MinesWeeper } from "./minesweeper";
+export { Minesweeper } from "./minesweeper";
 export { Cell } from "./cell";
 export { CellState } from "./cell_state";
 export { Board } from "./board";

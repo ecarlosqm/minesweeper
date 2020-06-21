@@ -1,6 +1,6 @@
-<div class="mines-weeper">
-    <div class="board" style="--board-size: {{minesWeeper.size()}};">
-        <ng-container *ngFor="let cell of minesWeeper.board()">
+<div class="minesweeper">
+    <div class="board" style="--board-size: {{minesweeper.size()}};">
+        <ng-container *ngFor="let cell of minesweeper.board()">
             <app-cell [cell]="cell" (uncoverCallback)="uncover($event)" (setFlagCallback)="setFlag($event)" style="--x:{{cell.coordinates().x()}};
                         --y:{{cell.coordinates().y()}};" class="cell"></app-cell>
         </ng-container>

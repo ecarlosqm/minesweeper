@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MinesWeeper, Coordinates } from 'minesweeper';
+import { Minesweeper as Minesweeper, Coordinates } from 'minesweeper';
 import { MatDialogModule, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { WinModalComponent } from './win-modal/win-modal.component';
 import { LoseModalComponent } from './lose-modal/lose-modal.component';
@@ -11,7 +11,7 @@ import { LoseModalComponent } from './lose-modal/lose-modal.component';
 })
 export class AppComponent implements OnInit {
 
-  minesWeeper: MinesWeeper;
+  minesweeper: Minesweeper;
   cancelUncoverMinesSubscriber: Function;
   cancelWinSubscriber: Function;
   uncoverAudio: HTMLAudioElement;
@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.minesWeeper = new MinesWeeper();
+    this.minesweeper = new Minesweeper();
     this._newGame();
 
     this._loadAudios();
@@ -49,12 +49,12 @@ export class AppComponent implements OnInit {
   }
 
   uncover(coordinates: Coordinates): void {
-    this.minesWeeper.uncover(coordinates);
+    this.minesweeper.uncover(coordinates);
     this._playUncoverAudio();
   }
 
   setFlag(coordinates: Coordinates): void {
-    this.minesWeeper.setFlag(coordinates);
+    this.minesweeper.setFlag(coordinates);
   }
 
   onLost(coordinates: Coordinates) {
@@ -78,7 +78,7 @@ export class AppComponent implements OnInit {
 
   openLoseDialog() {
 
-    this.minesWeeper.uncoverMines();
+    this.minesweeper.uncoverMines();
     const ref = this.materialDialog.open(LoseModalComponent, { disableClose: true });
 
     const subscriotion = ref.componentInstance.onTryAgain.subscribe((() => {
@@ -91,9 +91,9 @@ export class AppComponent implements OnInit {
     this.cancelUncoverMinesSubscriber?.call(this);
     this.cancelWinSubscriber?.call(this);
     console.log('ready');
-    this.minesWeeper.newBoard(15);
-    this.cancelUncoverMinesSubscriber = this.minesWeeper.onUncoverMine(this.onLost.bind(this));
-    this.cancelWinSubscriber = this.minesWeeper.onWin(this.onWin.bind(this));
+    this.minesweeper.newBoard(15);
+    this.cancelUncoverMinesSubscriber = this.minesweeper.onUncoverMine(this.onLost.bind(this));
+    this.cancelWinSubscriber = this.minesweeper.onWin(this.onWin.bind(this));
   }
 
   title = 'angular';

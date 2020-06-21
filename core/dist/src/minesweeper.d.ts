@@ -1,6 +1,6 @@
 import { Coordinates } from "./coordinates";
 import { Cell } from "./cell";
-export declare class MinesWeeper {
+export declare class Minesweeper {
     private _board;
     constructor();
     newBoard(size: number): void;
