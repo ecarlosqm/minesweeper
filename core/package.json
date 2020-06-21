@@ -1,0 +1,27 @@
+{
+  "name": "minesweeper",
+  "version": "1.0.0",
+  "description": "Minesweeper",
+  "main": "./dist/src/index.js",
+  "types": "./dist/src/index.d.ts",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest",
+    "build": "tsc",
+    "jesti": "jest --showConfig"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.0",
+    "jest": "^26.0.1",
+    "ts-jest": "^26.1.0",
+    "typescript": "^3.9.5"
+  },
+  "dependencies": {
+    "@types/faker": "^4.1.12",
+    "faker": "^4.1.0"
+  },
+  "author": "Erasmo Carlos",
+  "license": "ISC"
+}

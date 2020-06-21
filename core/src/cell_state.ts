@@ -1,0 +1,1 @@
+export enum CellState { FLAG, SIGN, HIDE, UNCOVERED }
