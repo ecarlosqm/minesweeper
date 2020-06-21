@@ -1,6 +1,6 @@
 # Minesweeper
 
-You can se a expample using Angular on this [link](https://ecarlosqm.github.io/minesweeper/)
+You can watch an expample using Angular on this [link](https://ecarlosqm.github.io/minesweeper/)
 
 Basic usage.
 ```typescript
