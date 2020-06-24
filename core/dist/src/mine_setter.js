@@ -7,8 +7,8 @@ var DefaultMineSetter = /** @class */ (function () {
     }
     DefaultMineSetter.prototype.setMines = function (board, excludeCell) {
         var cellsToMine = [];
-        while (cellsToMine.length != this._totalMines(board.size())) {
-            var coordinates = new coordinates_1.Coordinates(this._randomCordinate(board.size()), this._randomCordinate(board.size()));
+        while (cellsToMine.length != this._totalMines(board.size)) {
+            var coordinates = new coordinates_1.Coordinates(this._randomCordinate(board.size), this._randomCordinate(board.size));
             cellsToMine = this._addCellToMine(coordinates, excludeCell, cellsToMine, board);
         }
         cellsToMine.forEach(function (coordinates) {
@@ -19,14 +19,14 @@ var DefaultMineSetter = /** @class */ (function () {
         var excludedCell = board.cell(excludeCordinate);
         return !(excludeCordinate.equals(cellToMine)) &&
             !(cellsToMine.some(function (coordinates, index, coordinatesArray) { return coordinates.equals(cellToMine); })) &&
-            !(cellToMine.equals(excludedCell.topLeftCoordinate())) &&
-            !(cellToMine.equals(excludedCell.topCenterCoordinate())) &&
-            !(cellToMine.equals(excludedCell.topRightCoordinate())) &&
-            !(cellToMine.equals(excludedCell.leftCoordinate())) &&
-            !(cellToMine.equals(excludedCell.rightCoordinate())) &&
-            !(cellToMine.equals(excludedCell.bottomLeftCoordinate())) &&
-            !(cellToMine.equals(excludedCell.bottomCenterCoordinate())) &&
-            !(cellToMine.equals(excludedCell.bottomRightCoordinate()));
+            !(cellToMine.equals(excludedCell.topLeftCoordinate)) &&
+            !(cellToMine.equals(excludedCell.topCenterCoordinate)) &&
+            !(cellToMine.equals(excludedCell.topRightCoordinate)) &&
+            !(cellToMine.equals(excludedCell.leftCoordinate)) &&
+            !(cellToMine.equals(excludedCell.rightCoordinate)) &&
+            !(cellToMine.equals(excludedCell.bottomLeftCoordinate)) &&
+            !(cellToMine.equals(excludedCell.bottomCenterCoordinate)) &&
+            !(cellToMine.equals(excludedCell.bottomRightCoordinate));
     };
     DefaultMineSetter.prototype._totalMines = function (boardSize) {
         return boardSize * 2;

@@ -25,12 +25,12 @@ export class Minesweeper {
         this._board.setFlag(coordinates);
     }
 
-    public size():number{
-        return this._board.size();
+    public get size():number{
+        return this._board.size;
     }
 
-    public board():Array<Cell>{
-        return this._board.cells();
+    public get board():Array<Cell>{
+        return this._board.cells;
     }
 
     public onUncoverMine(callback: (coordinates:Coordinates)=>void):Function{

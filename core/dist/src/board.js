@@ -62,35 +62,43 @@ var Board = /** @class */ (function () {
     Board.prototype._setMinesAfterFirsMove = function (excludeCellIn) {
         this._mineSetter.setMines(this, excludeCellIn);
     };
-    Board.prototype.cells = function () {
-        var _a;
-        return (_a = Array()).concat.apply(_a, this._cells);
-    };
+    Object.defineProperty(Board.prototype, "cells", {
+        get: function () {
+            var _a;
+            return (_a = Array()).concat.apply(_a, this._cells);
+        },
+        enumerable: false,
+        configurable: true
+    });
     Board.prototype.cell = function (coordinates) {
-        return this._cells[this._coordinateToIndex(coordinates.x())][this._coordinateToIndex(coordinates.y())];
+        return this._cells[this._coordinateToIndex(coordinates.x)][this._coordinateToIndex(coordinates.y)];
     };
     Board.prototype._coordinateToIndex = function (coordinate) {
         return coordinate - 1;
     };
     Board.prototype._updateCell = function (coordinates, cell) {
-        this._assertCoordinatesAreEquals(coordinates, cell.coordinates(), 'To remplace a cell, the coordinates and cell.myCoordinate() must be equals');
-        this._cells[this._coordinateToIndex(coordinates.x())][this._coordinateToIndex(coordinates.y())] = cell;
+        this._assertCoordinatesAreEquals(coordinates, cell.coordinates, 'To remplace a cell, the coordinates and cell.myCoordinate() must be equals');
+        this._cells[this._coordinateToIndex(coordinates.x)][this._coordinateToIndex(coordinates.y)] = cell;
     };
     Board.prototype._totalNumberOfCell = function () {
-        return this.size() * this.size();
+        return this.size * this.size;
     };
     Board.prototype._checkIfWin = function () {
         return this._cellsUncoveredWithoutMines === this._totalNumberOfCell() - this._minesInBoard;
     };
     Board.prototype._isAvalidCoordinate = function (cordinate) {
-        return cordinate.x() <= this.size() &&
-            cordinate.y() <= this.size() &&
-            cordinate.x() > 0 &&
-            cordinate.y() > 0;
+        return cordinate.x <= this.size &&
+            cordinate.y <= this.size &&
+            cordinate.x > 0 &&
+            cordinate.y > 0;
     };
-    Board.prototype.size = function () {
-        return this._cells.length;
-    };
+    Object.defineProperty(Board.prototype, "size", {
+        get: function () {
+            return this._cells.length;
+        },
+        enumerable: false,
+        configurable: true
+    });
     Board.prototype.uncover = function (coordinates) {
         if (this._isBoardBlocked) {
             return;
@@ -99,7 +107,7 @@ var Board = /** @class */ (function () {
             this._setMinesAfterFirsMove(coordinates);
             this._isFirstMove = false;
         }
-        if (this.cell(coordinates).hasMine()) {
+        if (this.cell(coordinates).hasMine) {
             this._justUncoverCell(coordinates);
             this._callOnUncoverMineSuscribers(coordinates);
             this._isBoardBlocked = true;
@@ -118,14 +126,14 @@ var Board = /** @class */ (function () {
         this._mineLocations.push(coordinates);
         var cellToMine = this.cell(coordinates);
         this._updateCell(coordinates, cellToMine.setMine());
-        this._executeIfAreValidCordinates(cellToMine.topLeftCoordinate(), this._addOneToMineArroundValue);
-        this._executeIfAreValidCordinates(cellToMine.topCenterCoordinate(), this._addOneToMineArroundValue);
-        this._executeIfAreValidCordinates(cellToMine.topRightCoordinate(), this._addOneToMineArroundValue);
-        this._executeIfAreValidCordinates(cellToMine.leftCoordinate(), this._addOneToMineArroundValue);
-        this._executeIfAreValidCordinates(cellToMine.rightCoordinate(), this._addOneToMineArroundValue);
-        this._executeIfAreValidCordinates(cellToMine.bottomLeftCoordinate(), this._addOneToMineArroundValue);
-        this._executeIfAreValidCordinates(cellToMine.bottomCenterCoordinate(), this._addOneToMineArroundValue);
-        this._executeIfAreValidCordinates(cellToMine.bottomRightCoordinate(), this._addOneToMineArroundValue);
+        this._executeIfAreValidCordinates(cellToMine.topLeftCoordinate, this._addOneToMineArroundValue);
+        this._executeIfAreValidCordinates(cellToMine.topCenterCoordinate, this._addOneToMineArroundValue);
+        this._executeIfAreValidCordinates(cellToMine.topRightCoordinate, this._addOneToMineArroundValue);
+        this._executeIfAreValidCordinates(cellToMine.leftCoordinate, this._addOneToMineArroundValue);
+        this._executeIfAreValidCordinates(cellToMine.rightCoordinate, this._addOneToMineArroundValue);
+        this._executeIfAreValidCordinates(cellToMine.bottomLeftCoordinate, this._addOneToMineArroundValue);
+        this._executeIfAreValidCordinates(cellToMine.bottomCenterCoordinate, this._addOneToMineArroundValue);
+        this._executeIfAreValidCordinates(cellToMine.bottomRightCoordinate, this._addOneToMineArroundValue);
     };
     Board.prototype._executeIfAreValidCordinates = function (cooridnates, execute, orElse) {
         if (this._isAvalidCoordinate(cooridnates)) {
@@ -136,28 +144,28 @@ var Board = /** @class */ (function () {
         }
     };
     Board.prototype._addOneToMineArroundValue = function (coordinates) {
-        this._updateCell(coordinates, this.cell(coordinates).changeArroudMinesValue(this.cell(coordinates).minesArround() + 1));
+        this._updateCell(coordinates, this.cell(coordinates).changeArroudMinesValue(this.cell(coordinates).minesArround + 1));
     };
     Board.prototype._justUncoverCell = function (cellToUncover) {
-        if (!this.cell(cellToUncover).hasMine()) {
+        if (!this.cell(cellToUncover).hasMine) {
             this._cellsUncoveredWithoutMines++;
         }
         this._updateCell(cellToUncover, this.cell(cellToUncover).changeState(cell_state_1.CellState.UNCOVERED));
     };
     Board.prototype._uncoverCellAndCellsArround = function (currentCellCoordinates) {
         var currentCell = this.cell(currentCellCoordinates);
-        if (!currentCell.isUncovered()) {
+        if (!currentCell.isUncovered) {
             this._justUncoverCell(currentCellCoordinates);
         }
-        if (currentCell.minesArround() == 0 && !currentCell.isUncovered()) {
-            this._executeIfAreValidCordinates(currentCell.topLeftCoordinate(), this._uncoverCellAndCellsArround);
-            this._executeIfAreValidCordinates(currentCell.topCenterCoordinate(), this._uncoverCellAndCellsArround);
-            this._executeIfAreValidCordinates(currentCell.topRightCoordinate(), this._uncoverCellAndCellsArround);
-            this._executeIfAreValidCordinates(currentCell.leftCoordinate(), this._uncoverCellAndCellsArround);
-            this._executeIfAreValidCordinates(currentCell.rightCoordinate(), this._uncoverCellAndCellsArround);
-            this._executeIfAreValidCordinates(currentCell.bottomLeftCoordinate(), this._uncoverCellAndCellsArround);
-            this._executeIfAreValidCordinates(currentCell.bottomCenterCoordinate(), this._uncoverCellAndCellsArround);
-            this._executeIfAreValidCordinates(currentCell.bottomRightCoordinate(), this._uncoverCellAndCellsArround);
+        if (currentCell.minesArround == 0 && !currentCell.isUncovered) {
+            this._executeIfAreValidCordinates(currentCell.topLeftCoordinate, this._uncoverCellAndCellsArround);
+            this._executeIfAreValidCordinates(currentCell.topCenterCoordinate, this._uncoverCellAndCellsArround);
+            this._executeIfAreValidCordinates(currentCell.topRightCoordinate, this._uncoverCellAndCellsArround);
+            this._executeIfAreValidCordinates(currentCell.leftCoordinate, this._uncoverCellAndCellsArround);
+            this._executeIfAreValidCordinates(currentCell.rightCoordinate, this._uncoverCellAndCellsArround);
+            this._executeIfAreValidCordinates(currentCell.bottomLeftCoordinate, this._uncoverCellAndCellsArround);
+            this._executeIfAreValidCordinates(currentCell.bottomCenterCoordinate, this._uncoverCellAndCellsArround);
+            this._executeIfAreValidCordinates(currentCell.bottomRightCoordinate, this._uncoverCellAndCellsArround);
         }
     };
     Board.prototype.uncoverMines = function () {

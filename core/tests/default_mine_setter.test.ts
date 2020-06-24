@@ -18,7 +18,7 @@ test('No mines in exlude coordinate', () => {
     for (let index = 0; index < boardSize * boardSize; index++) {
         board.new(boardSize);
         board.uncover(randomCoordinate);
-        expect(board.cell(randomCoordinate).hasMine()).toEqual(false);
+        expect(board.cell(randomCoordinate).hasMine).toEqual(false);
     }
 })
 

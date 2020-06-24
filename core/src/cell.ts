@@ -8,39 +8,39 @@ export class Cell {
         return new Cell(coordinates, CellState.HIDE, 0, false);
     }
 
-    public topLeftCoordinate(): Coordinates{
-        return new Coordinates (this.coordinates().x()-1,this.coordinates().y()+1)
+    public get topLeftCoordinate(): Coordinates{
+        return new Coordinates (this.coordinates.x-1,this.coordinates.y+1)
     }
 
-    public topCenterCoordinate(): Coordinates{
-        return new Coordinates (this.coordinates().x(),this.coordinates().y()+1)
+    public get topCenterCoordinate(): Coordinates{
+        return new Coordinates (this.coordinates.x,this.coordinates.y+1)
     }
 
-    public topRightCoordinate(): Coordinates{
-        return new Coordinates (this.coordinates().x()+1,this.coordinates().y()+1)
+    public get topRightCoordinate(): Coordinates{
+        return new Coordinates (this.coordinates.x+1,this.coordinates.y+1)
     }
 
-    public leftCoordinate(): Coordinates{
-        return new Coordinates (this.coordinates().x()-1,this.coordinates().y())
+    public get leftCoordinate(): Coordinates{
+        return new Coordinates (this.coordinates.x-1,this.coordinates.y)
     }
 
-    public rightCoordinate(): Coordinates{
-        return new Coordinates (this.coordinates().x()+1,this.coordinates().y())
+    public get rightCoordinate(): Coordinates{
+        return new Coordinates (this.coordinates.x+1,this.coordinates.y)
     }
 
-    public bottomLeftCoordinate(): Coordinates{
-        return new Coordinates (this.coordinates().x()-1,this.coordinates().y()-1)
+    public get bottomLeftCoordinate(): Coordinates{
+        return new Coordinates (this.coordinates.x-1,this.coordinates.y-1)
     }
 
-    public bottomCenterCoordinate(): Coordinates{
-        return new Coordinates (this.coordinates().x(),this.coordinates().y()-1)
+    public get bottomCenterCoordinate(): Coordinates{
+        return new Coordinates (this.coordinates.x,this.coordinates.y-1)
     }
 
-    public bottomRightCoordinate(): Coordinates{
-        return new Coordinates (this.coordinates().x()+1,this.coordinates().y()-1)
+    public get bottomRightCoordinate(): Coordinates{
+        return new Coordinates (this.coordinates.x+1,this.coordinates.y-1)
     }
 
-    public coordinates(): Coordinates {
+    public get coordinates(): Coordinates {
         return this._coordinates;
     }
 
@@ -60,19 +60,19 @@ export class Cell {
         return this._state;
     }
 
-    public hasMine(): boolean {
+    public get hasMine(): boolean {
         return this._hasMine;
     }
     
-    public hasFlag():boolean {
+    public get hasFlag():boolean {
         return this._state == CellState.FLAG;
     }
 
-    public minesArround():number{
+    public get minesArround():number{
         return this._arroundMines;
     }
 
-    public isUncovered():boolean{
+    public get isUncovered():boolean{
         return this._state === CellState.UNCOVERED
     }
 }

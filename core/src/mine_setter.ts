@@ -12,9 +12,9 @@ export class DefaultMineSetter implements MineSetter {
 
         let cellsToMine: Coordinates[] = [];
 
-        while (cellsToMine.length != this._totalMines(board.size())) {
+        while (cellsToMine.length != this._totalMines(board.size)) {
 
-            let coordinates: Coordinates = new Coordinates(this._randomCordinate(board.size()), this._randomCordinate(board.size()));
+            let coordinates: Coordinates = new Coordinates(this._randomCordinate(board.size), this._randomCordinate(board.size));
 
             cellsToMine = this._addCellToMine(coordinates, excludeCell, cellsToMine,board);
 
@@ -31,14 +31,14 @@ export class DefaultMineSetter implements MineSetter {
 
         return !(excludeCordinate.equals(cellToMine)) &&
             !(cellsToMine.some((coordinates, index, coordinatesArray) => { return coordinates.equals(cellToMine) })) &&
-            !(cellToMine.equals(excludedCell.topLeftCoordinate())) &&
-            !(cellToMine.equals(excludedCell.topCenterCoordinate())) &&
-            !(cellToMine.equals(excludedCell.topRightCoordinate())) &&
-            !(cellToMine.equals(excludedCell.leftCoordinate())) &&
-            !(cellToMine.equals(excludedCell.rightCoordinate())) &&
-            !(cellToMine.equals(excludedCell.bottomLeftCoordinate())) &&
-            !(cellToMine.equals(excludedCell.bottomCenterCoordinate())) &&
-            !(cellToMine.equals(excludedCell.bottomRightCoordinate()));
+            !(cellToMine.equals(excludedCell.topLeftCoordinate)) &&
+            !(cellToMine.equals(excludedCell.topCenterCoordinate)) &&
+            !(cellToMine.equals(excludedCell.topRightCoordinate)) &&
+            !(cellToMine.equals(excludedCell.leftCoordinate)) &&
+            !(cellToMine.equals(excludedCell.rightCoordinate)) &&
+            !(cellToMine.equals(excludedCell.bottomLeftCoordinate)) &&
+            !(cellToMine.equals(excludedCell.bottomCenterCoordinate)) &&
+            !(cellToMine.equals(excludedCell.bottomRightCoordinate));
 
     }
 

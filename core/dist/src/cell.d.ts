@@ -7,22 +7,22 @@ export declare class Cell {
     private readonly _hasMine;
     private constructor();
     static createNew(coordinates: Coordinates): Cell;
-    topLeftCoordinate(): Coordinates;
-    topCenterCoordinate(): Coordinates;
-    topRightCoordinate(): Coordinates;
-    leftCoordinate(): Coordinates;
-    rightCoordinate(): Coordinates;
-    bottomLeftCoordinate(): Coordinates;
-    bottomCenterCoordinate(): Coordinates;
-    bottomRightCoordinate(): Coordinates;
-    coordinates(): Coordinates;
+    get topLeftCoordinate(): Coordinates;
+    get topCenterCoordinate(): Coordinates;
+    get topRightCoordinate(): Coordinates;
+    get leftCoordinate(): Coordinates;
+    get rightCoordinate(): Coordinates;
+    get bottomLeftCoordinate(): Coordinates;
+    get bottomCenterCoordinate(): Coordinates;
+    get bottomRightCoordinate(): Coordinates;
+    get coordinates(): Coordinates;
     changeState(state: CellState): Cell;
     changeArroudMinesValue(numberOfArroundMines: number): Cell;
     setMine(): Cell;
     state(): CellState;
-    hasMine(): boolean;
-    hasFlag(): boolean;
-    minesArround(): number;
-    isUncovered(): boolean;
+    get hasMine(): boolean;
+    get hasFlag(): boolean;
+    get minesArround(): number;
+    get isUncovered(): boolean;
 }
 //# sourceMappingURL=cell.d.ts.map

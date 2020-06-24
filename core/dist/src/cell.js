@@ -13,33 +13,69 @@ var Cell = /** @class */ (function () {
     Cell.createNew = function (coordinates) {
         return new Cell(coordinates, cell_state_1.CellState.HIDE, 0, false);
     };
-    Cell.prototype.topLeftCoordinate = function () {
-        return new coordinates_1.Coordinates(this.coordinates().x() - 1, this.coordinates().y() + 1);
-    };
-    Cell.prototype.topCenterCoordinate = function () {
-        return new coordinates_1.Coordinates(this.coordinates().x(), this.coordinates().y() + 1);
-    };
-    Cell.prototype.topRightCoordinate = function () {
-        return new coordinates_1.Coordinates(this.coordinates().x() + 1, this.coordinates().y() + 1);
-    };
-    Cell.prototype.leftCoordinate = function () {
-        return new coordinates_1.Coordinates(this.coordinates().x() - 1, this.coordinates().y());
-    };
-    Cell.prototype.rightCoordinate = function () {
-        return new coordinates_1.Coordinates(this.coordinates().x() + 1, this.coordinates().y());
-    };
-    Cell.prototype.bottomLeftCoordinate = function () {
-        return new coordinates_1.Coordinates(this.coordinates().x() - 1, this.coordinates().y() - 1);
-    };
-    Cell.prototype.bottomCenterCoordinate = function () {
-        return new coordinates_1.Coordinates(this.coordinates().x(), this.coordinates().y() - 1);
-    };
-    Cell.prototype.bottomRightCoordinate = function () {
-        return new coordinates_1.Coordinates(this.coordinates().x() + 1, this.coordinates().y() - 1);
-    };
-    Cell.prototype.coordinates = function () {
-        return this._coordinates;
-    };
+    Object.defineProperty(Cell.prototype, "topLeftCoordinate", {
+        get: function () {
+            return new coordinates_1.Coordinates(this.coordinates.x - 1, this.coordinates.y + 1);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Cell.prototype, "topCenterCoordinate", {
+        get: function () {
+            return new coordinates_1.Coordinates(this.coordinates.x, this.coordinates.y + 1);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Cell.prototype, "topRightCoordinate", {
+        get: function () {
+            return new coordinates_1.Coordinates(this.coordinates.x + 1, this.coordinates.y + 1);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Cell.prototype, "leftCoordinate", {
+        get: function () {
+            return new coordinates_1.Coordinates(this.coordinates.x - 1, this.coordinates.y);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Cell.prototype, "rightCoordinate", {
+        get: function () {
+            return new coordinates_1.Coordinates(this.coordinates.x + 1, this.coordinates.y);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Cell.prototype, "bottomLeftCoordinate", {
+        get: function () {
+            return new coordinates_1.Coordinates(this.coordinates.x - 1, this.coordinates.y - 1);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Cell.prototype, "bottomCenterCoordinate", {
+        get: function () {
+            return new coordinates_1.Coordinates(this.coordinates.x, this.coordinates.y - 1);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Cell.prototype, "bottomRightCoordinate", {
+        get: function () {
+            return new coordinates_1.Coordinates(this.coordinates.x + 1, this.coordinates.y - 1);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Cell.prototype, "coordinates", {
+        get: function () {
+            return this._coordinates;
+        },
+        enumerable: false,
+        configurable: true
+    });
     Cell.prototype.changeState = function (state) {
         return new Cell(this._coordinates, state, this._arroundMines, this._hasMine);
     };
@@ -52,18 +88,34 @@ var Cell = /** @class */ (function () {
     Cell.prototype.state = function () {
         return this._state;
     };
-    Cell.prototype.hasMine = function () {
-        return this._hasMine;
-    };
-    Cell.prototype.hasFlag = function () {
-        return this._state == cell_state_1.CellState.FLAG;
-    };
-    Cell.prototype.minesArround = function () {
-        return this._arroundMines;
-    };
-    Cell.prototype.isUncovered = function () {
-        return this._state === cell_state_1.CellState.UNCOVERED;
-    };
+    Object.defineProperty(Cell.prototype, "hasMine", {
+        get: function () {
+            return this._hasMine;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Cell.prototype, "hasFlag", {
+        get: function () {
+            return this._state == cell_state_1.CellState.FLAG;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Cell.prototype, "minesArround", {
+        get: function () {
+            return this._arroundMines;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Cell.prototype, "isUncovered", {
+        get: function () {
+            return this._state === cell_state_1.CellState.UNCOVERED;
+        },
+        enumerable: false,
+        configurable: true
+    });
     return Cell;
 }());
 exports.Cell = Cell;

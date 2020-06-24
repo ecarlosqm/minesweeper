@@ -19,12 +19,20 @@ var Minesweeper = /** @class */ (function () {
     Minesweeper.prototype.setFlag = function (coordinates) {
         this._board.setFlag(coordinates);
     };
-    Minesweeper.prototype.size = function () {
-        return this._board.size();
-    };
-    Minesweeper.prototype.board = function () {
-        return this._board.cells();
-    };
+    Object.defineProperty(Minesweeper.prototype, "size", {
+        get: function () {
+            return this._board.size;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Minesweeper.prototype, "board", {
+        get: function () {
+            return this._board.cells;
+        },
+        enumerable: false,
+        configurable: true
+    });
     Minesweeper.prototype.onUncoverMine = function (callback) {
         return this._board.onUncovereMine(callback);
     };

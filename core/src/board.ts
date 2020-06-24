@@ -76,12 +76,12 @@ export class Board {
         this._mineSetter.setMines(this, excludeCellIn);
     }
 
-    public cells(): Cell[] {
+    public get cells(): Cell[] {
         return Array<Cell>().concat(...this._cells);
     }
 
     public cell(coordinates: Coordinates): Cell {
-        return this._cells[this._coordinateToIndex(coordinates.x())][this._coordinateToIndex(coordinates.y())];
+        return this._cells[this._coordinateToIndex(coordinates.x)][this._coordinateToIndex(coordinates.y)];
     }
 
     private _coordinateToIndex(coordinate: number) {
@@ -90,14 +90,14 @@ export class Board {
 
     private _updateCell(coordinates: Coordinates, cell: Cell) {
 
-        this._assertCoordinatesAreEquals(coordinates, cell.coordinates(), 'To remplace a cell, the coordinates and cell.myCoordinate() must be equals')
+        this._assertCoordinatesAreEquals(coordinates, cell.coordinates, 'To remplace a cell, the coordinates and cell.myCoordinate() must be equals')
 
-        this._cells[this._coordinateToIndex(coordinates.x(),)][this._coordinateToIndex(coordinates.y())] = cell;
+        this._cells[this._coordinateToIndex(coordinates.x,)][this._coordinateToIndex(coordinates.y)] = cell;
 
     }
 
     private _totalNumberOfCell(): number {
-        return this.size() * this.size();
+        return this.size * this.size;
     }
 
     private _checkIfWin(): boolean {
@@ -105,13 +105,13 @@ export class Board {
     }
 
     private _isAvalidCoordinate(cordinate: Coordinates) {
-        return cordinate.x() <= this.size() &&
-            cordinate.y() <= this.size() &&
-            cordinate.x() > 0 &&
-            cordinate.y() > 0;
+        return cordinate.x <= this.size &&
+            cordinate.y <= this.size &&
+            cordinate.x > 0 &&
+            cordinate.y > 0;
     }
 
-    public size(): number {
+    public get size(): number {
         return this._cells.length;
     }
 
@@ -126,7 +126,7 @@ export class Board {
             this._isFirstMove = false;
         }
 
-        if (this.cell(coordinates).hasMine()) {
+        if (this.cell(coordinates).hasMine) {
             this._justUncoverCell(coordinates);
             this._callOnUncoverMineSuscribers(coordinates);
             this._isBoardBlocked = true;
@@ -153,16 +153,16 @@ export class Board {
         let cellToMine: Cell = this.cell(coordinates);
         this._updateCell(coordinates, cellToMine.setMine());
 
-        this._executeIfAreValidCordinates(cellToMine.topLeftCoordinate(), this._addOneToMineArroundValue);
-        this._executeIfAreValidCordinates(cellToMine.topCenterCoordinate(), this._addOneToMineArroundValue);
-        this._executeIfAreValidCordinates(cellToMine.topRightCoordinate(), this._addOneToMineArroundValue);
+        this._executeIfAreValidCordinates(cellToMine.topLeftCoordinate, this._addOneToMineArroundValue);
+        this._executeIfAreValidCordinates(cellToMine.topCenterCoordinate, this._addOneToMineArroundValue);
+        this._executeIfAreValidCordinates(cellToMine.topRightCoordinate, this._addOneToMineArroundValue);
 
-        this._executeIfAreValidCordinates(cellToMine.leftCoordinate(), this._addOneToMineArroundValue);
-        this._executeIfAreValidCordinates(cellToMine.rightCoordinate(), this._addOneToMineArroundValue);
+        this._executeIfAreValidCordinates(cellToMine.leftCoordinate, this._addOneToMineArroundValue);
+        this._executeIfAreValidCordinates(cellToMine.rightCoordinate, this._addOneToMineArroundValue);
 
-        this._executeIfAreValidCordinates(cellToMine.bottomLeftCoordinate(), this._addOneToMineArroundValue);
-        this._executeIfAreValidCordinates(cellToMine.bottomCenterCoordinate(), this._addOneToMineArroundValue);
-        this._executeIfAreValidCordinates(cellToMine.bottomRightCoordinate(), this._addOneToMineArroundValue);
+        this._executeIfAreValidCordinates(cellToMine.bottomLeftCoordinate, this._addOneToMineArroundValue);
+        this._executeIfAreValidCordinates(cellToMine.bottomCenterCoordinate, this._addOneToMineArroundValue);
+        this._executeIfAreValidCordinates(cellToMine.bottomRightCoordinate, this._addOneToMineArroundValue);
     }
 
     private _executeIfAreValidCordinates(cooridnates: Coordinates, execute: (validCoordinates: Coordinates) => void, orElse?: () => void) {
@@ -174,11 +174,11 @@ export class Board {
     }
 
     private _addOneToMineArroundValue(coordinates: Coordinates) {
-        this._updateCell(coordinates, this.cell(coordinates).changeArroudMinesValue(this.cell(coordinates).minesArround() + 1));
+        this._updateCell(coordinates, this.cell(coordinates).changeArroudMinesValue(this.cell(coordinates).minesArround + 1));
     }
 
     private _justUncoverCell(cellToUncover: Coordinates) {
-        if (!this.cell(cellToUncover).hasMine()) {
+        if (!this.cell(cellToUncover).hasMine) {
             this._cellsUncoveredWithoutMines++
         }
         this._updateCell(cellToUncover, this.cell(cellToUncover).changeState(CellState.UNCOVERED));
@@ -187,22 +187,22 @@ export class Board {
     private _uncoverCellAndCellsArround(currentCellCoordinates: Coordinates) {
         const currentCell: Cell = this.cell(currentCellCoordinates);
 
-        if (!currentCell.isUncovered()) {
+        if (!currentCell.isUncovered) {
             this._justUncoverCell(currentCellCoordinates);
         }
 
-        if (currentCell.minesArround() == 0 && !currentCell.isUncovered()) {
+        if (currentCell.minesArround == 0 && !currentCell.isUncovered) {
 
-            this._executeIfAreValidCordinates(currentCell.topLeftCoordinate(), this._uncoverCellAndCellsArround);
-            this._executeIfAreValidCordinates(currentCell.topCenterCoordinate(), this._uncoverCellAndCellsArround);
-            this._executeIfAreValidCordinates(currentCell.topRightCoordinate(), this._uncoverCellAndCellsArround);
+            this._executeIfAreValidCordinates(currentCell.topLeftCoordinate, this._uncoverCellAndCellsArround);
+            this._executeIfAreValidCordinates(currentCell.topCenterCoordinate, this._uncoverCellAndCellsArround);
+            this._executeIfAreValidCordinates(currentCell.topRightCoordinate, this._uncoverCellAndCellsArround);
 
-            this._executeIfAreValidCordinates(currentCell.leftCoordinate(), this._uncoverCellAndCellsArround);
-            this._executeIfAreValidCordinates(currentCell.rightCoordinate(), this._uncoverCellAndCellsArround);
+            this._executeIfAreValidCordinates(currentCell.leftCoordinate, this._uncoverCellAndCellsArround);
+            this._executeIfAreValidCordinates(currentCell.rightCoordinate, this._uncoverCellAndCellsArround);
 
-            this._executeIfAreValidCordinates(currentCell.bottomLeftCoordinate(), this._uncoverCellAndCellsArround);
-            this._executeIfAreValidCordinates(currentCell.bottomCenterCoordinate(), this._uncoverCellAndCellsArround);
-            this._executeIfAreValidCordinates(currentCell.bottomRightCoordinate(), this._uncoverCellAndCellsArround);
+            this._executeIfAreValidCordinates(currentCell.bottomLeftCoordinate, this._uncoverCellAndCellsArround);
+            this._executeIfAreValidCordinates(currentCell.bottomCenterCoordinate, this._uncoverCellAndCellsArround);
+            this._executeIfAreValidCordinates(currentCell.bottomRightCoordinate, this._uncoverCellAndCellsArround);
         }
     }
 

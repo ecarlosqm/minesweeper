@@ -16,7 +16,7 @@ minesweeper.uncover(new Coordinates(1,1));
 
 Draw board.
 ```typescript
-const cells:Cell[] = minesweeper.board();
+const cells:Cell[] = minesweeper.board;
 
 cells.forEach((cell,index,cells)=>{
     functionTodrawACell(cell);

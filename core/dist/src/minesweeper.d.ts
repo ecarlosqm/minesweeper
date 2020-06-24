@@ -6,8 +6,8 @@ export declare class Minesweeper {
     newBoard(size: number): void;
     uncover(coordinates: Coordinates): void;
     setFlag(coordinates: Coordinates): void;
-    size(): number;
-    board(): Array<Cell>;
+    get size(): number;
+    get board(): Array<Cell>;
     onUncoverMine(callback: (coordinates: Coordinates) => void): Function;
     onWin(callback: () => void): Function;
     uncoverMines(): void;

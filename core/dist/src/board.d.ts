@@ -23,14 +23,14 @@ export declare class Board {
     private _reset;
     new(size: number): void;
     _setMinesAfterFirsMove(excludeCellIn: Coordinates): void;
-    cells(): Cell[];
+    get cells(): Cell[];
     cell(coordinates: Coordinates): Cell;
     private _coordinateToIndex;
     private _updateCell;
     private _totalNumberOfCell;
     private _checkIfWin;
     private _isAvalidCoordinate;
-    size(): number;
+    get size(): number;
     uncover(coordinates: Coordinates): void;
     setFlag(coordinates: Coordinates): void;
     setMine(coordinates: Coordinates): void;

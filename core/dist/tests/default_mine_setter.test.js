@@ -33,7 +33,7 @@ test('No mines in exlude coordinate', function () {
     for (var index = 0; index < boardSize * boardSize; index++) {
         board.new(boardSize);
         board.uncover(randomCoordinate);
-        expect(board.cell(randomCoordinate).hasMine()).toEqual(false);
+        expect(board.cell(randomCoordinate).hasMine).toEqual(false);
     }
 });
 test('Set mine only once in the same cell', function () {

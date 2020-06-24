@@ -61,35 +61,35 @@ test('uncover() set the correct arroundMineValue for each cell in ther first mov
 
   board.uncover(fitsMove);
 
-  expect(board.cell(new Coordinates(1, 1)).minesArround()).toBe(1);
-  expect(board.cell(new Coordinates(2, 1)).minesArround()).toBe(1);
-  expect(board.cell(new Coordinates(3, 1)).minesArround()).toBe(2);
-  expect(board.cell(new Coordinates(4, 1)).minesArround()).toBe(1);
-  expect(board.cell(new Coordinates(5, 1)).minesArround()).toBe(1);
+  expect(board.cell(new Coordinates(1, 1)).minesArround).toBe(1);
+  expect(board.cell(new Coordinates(2, 1)).minesArround).toBe(1);
+  expect(board.cell(new Coordinates(3, 1)).minesArround).toBe(2);
+  expect(board.cell(new Coordinates(4, 1)).minesArround).toBe(1);
+  expect(board.cell(new Coordinates(5, 1)).minesArround).toBe(1);
 
-  expect(board.cell(new Coordinates(1, 2)).minesArround()).toBe(1);
-  expect(board.cell(new Coordinates(2, 2)).minesArround()).toBe(0);
-  expect(board.cell(new Coordinates(3, 2)).minesArround()).toBe(2);
-  expect(board.cell(new Coordinates(4, 2)).minesArround()).toBe(0);
-  expect(board.cell(new Coordinates(5, 2)).minesArround()).toBe(1);
+  expect(board.cell(new Coordinates(1, 2)).minesArround).toBe(1);
+  expect(board.cell(new Coordinates(2, 2)).minesArround).toBe(0);
+  expect(board.cell(new Coordinates(3, 2)).minesArround).toBe(2);
+  expect(board.cell(new Coordinates(4, 2)).minesArround).toBe(0);
+  expect(board.cell(new Coordinates(5, 2)).minesArround).toBe(1);
 
-  expect(board.cell(new Coordinates(1, 3)).minesArround()).toBe(2);
-  expect(board.cell(new Coordinates(2, 3)).minesArround()).toBe(2);
-  expect(board.cell(new Coordinates(3, 3)).minesArround()).toBe(4);
-  expect(board.cell(new Coordinates(4, 3)).minesArround()).toBe(2);
-  expect(board.cell(new Coordinates(5, 3)).minesArround()).toBe(2);
+  expect(board.cell(new Coordinates(1, 3)).minesArround).toBe(2);
+  expect(board.cell(new Coordinates(2, 3)).minesArround).toBe(2);
+  expect(board.cell(new Coordinates(3, 3)).minesArround).toBe(4);
+  expect(board.cell(new Coordinates(4, 3)).minesArround).toBe(2);
+  expect(board.cell(new Coordinates(5, 3)).minesArround).toBe(2);
 
-  expect(board.cell(new Coordinates(1, 4)).minesArround()).toBe(1);
-  expect(board.cell(new Coordinates(2, 4)).minesArround()).toBe(0);
-  expect(board.cell(new Coordinates(3, 4)).minesArround()).toBe(2);
-  expect(board.cell(new Coordinates(4, 4)).minesArround()).toBe(0);
-  expect(board.cell(new Coordinates(5, 4)).minesArround()).toBe(1);
+  expect(board.cell(new Coordinates(1, 4)).minesArround).toBe(1);
+  expect(board.cell(new Coordinates(2, 4)).minesArround).toBe(0);
+  expect(board.cell(new Coordinates(3, 4)).minesArround).toBe(2);
+  expect(board.cell(new Coordinates(4, 4)).minesArround).toBe(0);
+  expect(board.cell(new Coordinates(5, 4)).minesArround).toBe(1);
 
-  expect(board.cell(new Coordinates(1, 5)).minesArround()).toBe(1);
-  expect(board.cell(new Coordinates(2, 5)).minesArround()).toBe(1);
-  expect(board.cell(new Coordinates(3, 5)).minesArround()).toBe(2);
-  expect(board.cell(new Coordinates(4, 5)).minesArround()).toBe(1);
-  expect(board.cell(new Coordinates(5, 5)).minesArround()).toBe(1);
+  expect(board.cell(new Coordinates(1, 5)).minesArround).toBe(1);
+  expect(board.cell(new Coordinates(2, 5)).minesArround).toBe(1);
+  expect(board.cell(new Coordinates(3, 5)).minesArround).toBe(2);
+  expect(board.cell(new Coordinates(4, 5)).minesArround).toBe(1);
+  expect(board.cell(new Coordinates(5, 5)).minesArround).toBe(1);
 })
 
 test('uncover() calls once MineSetter.setMines() only for the first move', () => {

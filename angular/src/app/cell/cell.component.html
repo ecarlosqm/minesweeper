@@ -1,16 +1,16 @@
-<div *ngIf="cell.isUncovered(); then cellUncovered; else cellHide"></div>
+<div *ngIf="cell.isUncovered; then cellUncovered; else cellHide"></div>
 
 <ng-template #cellUncovered>
-    <div *ngIf="cell.hasMine(); then cellContentMine; else cellContentMinesArround"></div>
+    <div *ngIf="cell.hasMine; then cellContentMine; else cellContentMinesArround"></div>
 </ng-template>
 
 <ng-template #cellHide>
-    <div *ngIf="cell.hasFlag(); then cellContentFlag; else cellContentButton"></div>
+    <div *ngIf="cell.hasFlag; then cellContentFlag; else cellContentButton"></div>
 </ng-template>
 
 <ng-template #cellContentFlag>
   
-        <button (click)="uncover(cell.coordinates())" class="cell-content-button">
+        <button (click)="uncover(cell.coordinates)" class="cell-content-button">
             <img class="img-responsive" src="assets/images/flag.png">
         </button>
 
@@ -19,19 +19,19 @@
 
 <ng-template #cellContentButton>
    
-        <button (contextmenu)="setFlag(cell.coordinates())" (click)="uncover(cell.coordinates())"
+        <button (contextmenu)="setFlag(cell.coordinates)" (click)="uncover(cell.coordinates)"
         class="cell-content-button"></button>
 
 </ng-template>
 
 <ng-template #cellContentMinesArround>
-    <div [ngClass]="{'mine':cell.hasMine(), 'cell-content-value': true}">
-        {{cell.minesArround() == 0? "": cell.minesArround()}}
+    <div [ngClass]="{'mine':cell.hasMine, 'cell-content-value': true}">
+        {{cell.minesArround == 0? "": cell.minesArround}}
     </div>
 </ng-template>
 
 <ng-template #cellContentMine>
-    <div [ngClass]="{'mine':cell.hasMine(), 'cell-content-value': true}">
+    <div [ngClass]="{'mine':cell.hasMine, 'cell-content-value': true}">
         <img class="img-responsive" src="assets/images/bomb.png">
     </div>
 </ng-template>
